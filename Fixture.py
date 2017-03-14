@@ -6,7 +6,7 @@ class Fixture(object):
 
     def __init__(self,_robots):
         self.robots = _robots
-        self.nro_robots = len(_robots)
+        self.nro_robots = len(self.robots)
 
 
         return
