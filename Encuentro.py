@@ -1,8 +1,7 @@
 class Encuentro(object):
     robot_l = None
     robot_v = None
-    ganador_v = False
-    ganador_l = False
+    ganador = None
 
     def __init__(self,_robots):
         self.robot_l = _robots[0]
@@ -10,24 +9,21 @@ class Encuentro(object):
         return
     
     
-    def gano(_nombre_r):
+    def gano(self, _nombre_r):
         """  """
-        pass
-        # if self.robot_l.nombre == _nombre_r:
-        #     self.ganador_l = True
+        # pass
+        if self.robot_l.nombre == _nombre_r:
+            self.ganador = self.robot_l
     
-        # elif self.robot_v.nombre == _nombre_r:
-        #     self.ganador_v = True
+        elif self.robot_v.nombre == _nombre_r:
+            self.ganador = self.robot_v
         
-        # else:
-        #     raise Exception('No pertece al encuentro')
+        else:
+            raise Exception('No pertece al encuentro')
     
-    def get_ganador():
+    def get_ganador(self):
         """  """
-        pass
-        # if ganador_l:
-        #     return robot_l
-        # else:
-        #     return robot_v
+        # pass
+        return self.ganador
 
             
