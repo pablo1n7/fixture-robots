@@ -1,29 +1,33 @@
-class Encuentro(object):
-    robot_l = None
-    robot_v = None
-    ganador = None
 
-    def __init__(self,_robots):
-        self.robot_l = _robots[0]
-        self.robot_v = _robots[1]
-        return
-    
-    
-    def gano(self, _nombre_r):
-        """  """
-        # pass
-        if self.robot_l.nombre == _nombre_r:
-            self.ganador = self.robot_l
-    
-        elif self.robot_v.nombre == _nombre_r:
-            self.ganador = self.robot_v
-        
-        else:
-            raise Exception('No pertece al encuentro')
-    
-    def get_ganador(self):
-        """  """
-        # pass
-        return self.ganador
+class Encuentro(object):
+    def __init__(self, robot_1, robot_2):
+        self.robot_1 = robot_1
+        self.robot_2 = robot_2
+        self.matchs = []
+
+
+    def raund(self, _robot):
+        self.matchs.append(_robot)
+
+
+    def ganador(self):
+        r1 = [ r for r in self.matchs if r == self.robot_1 ]
+        r2 = [ r for r in self.matchs if r == self.robot_2 ] 
+        if len(r1) > len(r2):
+            return self.robot_1
+        elif len(r1) < len(r2):
+            return self.robot_2
+
+def main():
+    e = Encuentro("1", "2")
+    e.raund("1")
+    e.raund("2")
+    e.raund("2")
+    e.raund("1")
+    e.raund("1")
+    print(e.ganador())
+
+if __name__ == '__main__':
+    main()
 
             
