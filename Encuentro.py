@@ -1,5 +1,5 @@
 
-class Encuentro(object):
+class Encuentro(set):
     def __init__(self, robot_1, robot_2):
         self.robot_1 = robot_1
         self.robot_2 = robot_2
@@ -17,6 +17,10 @@ class Encuentro(object):
             return self.robot_1
         elif len(r1) < len(r2):
             return self.robot_2
+
+
+    def __str__(self):
+        return "<%s vs %s>" % (self.robot_1, self.robot_2)
 
 def main():
     e = Encuentro("1", "2")
