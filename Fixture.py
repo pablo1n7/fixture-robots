@@ -37,6 +37,8 @@ def generador_brutus(robots):
     encuentros = [encuentro for encuentro in encuentros if encuentro.es_valido()]
     # Filtramos los iguales
     encuentros = reduce(lambda acumulador, encuentro: encuentro in acumulador and acumulador or acumulador + [encuentro], encuentros, [])
+    # Quitar los que conpite la misma escuela
+    encuentros = filter(lambda encuentro: not encuentro.misma_escuela(), encuentros)
 
     return encuentros
 

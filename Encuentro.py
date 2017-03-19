@@ -14,6 +14,8 @@ class Encuentro(set):
         """Para que el encuentro sea valido los robots deben ser distintos"""
         return self.robot_1 != self.robot_2
 
+    def misma_escuela(self):
+        return self.robot_1.escuela == self.robot_2.escuela
 
     def __eq__(self, other):
         """Un encuentro es igual a otro si tiene los mismos robots"""
