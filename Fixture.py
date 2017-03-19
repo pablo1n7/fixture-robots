@@ -2,29 +2,28 @@ import random
 from Encuentro import Encuentro
 
 class Fixture(object):
-    robots = []
-    nro_robots = 0
-    nro_rondas = 0
-    encuentros = []
-
-    def __init__(self,_robots):
-        self.robots = _robots
-        self.nro_robots = len(self.robots)
-        # self.nro_rondas = len(_robots) if len(_robots)%2!=0 else len(_robots)-1
-
-        return
     
+    def __init__(self, robots):
+        self.robots = robots
+        self.rondas = []
 
-    def vencedor(self, _robot):
+
+    def vencedor(self, robot):
         pass
 
-    def get_encuentros(self, _ronda=-1):
-        return self.encuentros[_ronda]
+
+    def ronda(self):
+        robots = not self.rondas and self.robots or [e for e in self.rondas[-1] if e.ganador() ]
+        self.rondas.append(self._generar_encuentros(robots))
+
+
+    def encuentros(self, ronda):
+        return self.rondas[ronda]
     
-    def generar_encuentros(self, _robs=robots):
-        print("robs: {}".format(_robs))
-        if len(_robs)==2:
-            return [Encuentro([_robs[0], _robs[1]])]
+
+    def _generar_encuentros(self, _robs):
+        if len(_robs) == 2:
+            return [Encuentro(_robs[0], _robs[1])]
         
         _escuela = _robs[0].escuela
         _neutros = [r for r in _robs if r.escuela==_escuela]
@@ -42,9 +41,9 @@ class Fixture(object):
         
         _robs.remove(_rob_1)
         _robs.remove(_rob_2)
-        _encuentros.append(Encuentro([_rob_1, _rob_2]))
+        _encuentros.append(Encuentro(_rob_1, _rob_2))
         
-        _encuentros.extend(self.generar_encuentros(_robs))
+        _encuentros.extend(self._generar_encuentros(_robs))
         
         return _encuentros
 
@@ -57,3 +56,4 @@ class Fixture(object):
         _encuentros_ronda = self.generar_encuentros(self.robots.copy())
         self.encuentros.append(_encuentros_ronda)
         return
+    
