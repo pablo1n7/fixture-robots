@@ -1,5 +1,6 @@
 import random
 from Encuentro import Encuentro
+from functools import reduce
 
 def generador_samu(robots):
     if len(robots) == 2:
@@ -34,6 +35,9 @@ def generador_brutus(robots):
     random.shuffle(encuentros)
     # Filtramos los que son validos
     encuentros = [encuentro for encuentro in encuentros if encuentro.es_valido()]
+    # Filtramos los iguales
+    encuentros = reduce(lambda acumulador, encuentro: encuentro in acumulador and acumulador or acumulador + [encuentro], encuentros, [])
+
     return encuentros
 
 GENERADORES = {
