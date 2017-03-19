@@ -10,6 +10,11 @@ class Encuentro(set):
         self.matchs.append(_robot)
 
 
+    def es_valido(self):
+        """Para que el encuentro sea valido los robots deben ser distintos"""
+        return self.robot_1 != self.robot_2
+
+
     def ganador(self):
         r1 = [ r for r in self.matchs if r == self.robot_1 ]
         r2 = [ r for r in self.matchs if r == self.robot_2 ] 

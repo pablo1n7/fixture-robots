@@ -1,6 +1,5 @@
 from Robot import Robot
 from Fixture import Fixture
-from pprint import pprint
 
 
 # 7 o 8 robots en total
@@ -16,7 +15,8 @@ def main():
 
     fixture = Fixture(robots)
     fixture.ronda()
-    pprint(fixture.encuentros(0))
+    for encuentro in fixture.encuentros(0):
+        print(encuentro)
 
 if __name__ == '__main__':
     main()
