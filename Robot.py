@@ -1,12 +1,17 @@
-class Robot(object):
-    nombre = ""
-    escuela = ""
-    encargado = "" #consultar el reglamento para poner un nombre mejor
+from collections import namedtuple
 
-    def __init__(self,_nombre,_escuela,_encargado):
-        self.nombre = _nombre
-        self.escuela = _escuela
-        self.encargado = _encargado
+Robot = namedtuple("Robot", "nombre escuela encargado")
 
-    def __str__ (self):
-        return self.nombre
+def main():
+    r1 = Robot("Ultron", "Los Avengers", "Nick Fury")
+    r2 = Robot("Wall-e", "Pixar", "Sr. Disney")
+    r3 = Robot("Ultron", "Los Avengers", "Nick Fury")
+    print("r1 is r2", r1 is r2, end=", ")
+    print("r1 == r2", r1 == r2)
+    print("r1 is r1", r1 is r1, end=", ")
+    print("r1 == r1", r1 == r1)
+    print("r1 is r3", r1 is r3, end=", ")
+    print("r1 == r3", r1 == r3)
+
+if __name__ == '__main__':
+    main()
